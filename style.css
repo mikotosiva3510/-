@@ -16,7 +16,16 @@ header {
   padding: 40px;
   text-align: center;
 }
-
+/* タイトル位置とアニメーション */
+header h1 {
+  margin: 0;
+  font-size: 40px;
+  color: #e44;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: fadeIn 1.5s ease-in-out;
+}
 h1 {
   margin: 0;
   font-size: 40px;
@@ -65,13 +74,22 @@ h1 {
   padding: 0;
 }
 
+/* ===== コンセプト画像セクション ===== */
 .concept-section img {
   width: 100%;
-  height: auto;
+  height: 700px; /* ← ここで縦幅を指定（好みに合わせて調整） */
+  object-fit: cover;
+  object-position: bottom; 
   display: block;
+  animation: fadeInImage 1.8s ease-in-out;
   border-radius: 0;
   box-shadow: none;
   margin: 0;
+}
+.concept-section {
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 /* ===== おすすめ記事スライダー ===== */
@@ -157,7 +175,42 @@ h1 {
   margin: 10px 0;
   font-size: 16px;
 }
+/* 別ナビゲーションリンク共通 */
+.item-list li a {
+  color: white;
+  text-decoration: none;
+}
+/* 記事ページの共通スタイル */
+.article-page header h1 {
+  text-align: center;
+  margin-top: 20px;
+}
 
+/* 画像と本文をセンターに */
+.article-content {
+  text-align: center;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 20px;
+}
+
+.article-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 20px;
+}
+
+.article-content p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #fff;
+}
+/* ホバー時のカラー（必要に応じて） */
+.item-list li a:hover {
+  color: #e44; /* 任意のホバー色 */
+  text-decoration: none; /* ホバー時もアンダーラインなし */
+}
 /* スライダー矢印ボタン */
 .slider-btn {
   background: none;
@@ -352,4 +405,73 @@ footer {
     font-size: 24px;
     height: 32px;
   }
+}
+
+/* === レスポンシブ対応 === */
+@media (max-width: 768px) {
+  .article-title {
+    font-size: 24px;
+  }
+
+  .article-content p {
+    font-size: 16px;
+  }
+}
+/* アニメーションの定義 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%);
+  }
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 24px;
+  }
+}
+/* アニメーションの定義 */
+@keyframes fadeInImage {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.auto-slider {
+  position: relative;
+  width: 100%;
+  max-height: 300px;
+  overflow: hidden;
+}
+
+.auto-slider .slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  z-index: 0;
+}
+
+.auto-slider .slide img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+.auto-slider .slide.active {
+  opacity: 1;
+  z-index: 1;
 }

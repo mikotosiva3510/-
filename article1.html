@@ -5,17 +5,18 @@
   <title>最新リーク情報！新キャラ登場か？</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="article-page">
   <header>
     <h1>Apex Legends News</h1>
     <nav>
-      <ul>
-        <li><a href="index.html">ホーム</a></li>
+      <ul class="item-list">
+  <li><a href="index.html">ホーム</a></li>
+  <li><a href="article1.html"></a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
+  <main class="article-content">
     <article class="detail-article">
       <h2>最新リーク情報！新キャラ登場か？</h2>
       <p>投稿日：2025年6月10日</p>
@@ -27,10 +28,24 @@
         アビリティ情報はまだ未確定ですが、透明化と移動スキルに特化しているとのこと。公式の発表が待たれます。
       </p>
     </article>
+    
   </main>
 
   <footer>
     <p>&copy; 2025 Apex Legends News</p>
   </footer>
+  <script>
+  let currentSlide = 0;
+  const slides = document.querySelectorAll(".auto-slider .slide");
+  const totalSlides = slides.length;
+
+  function showNextSlide() {
+    slides[currentSlide].classList.remove("active");
+    currentSlide = (currentSlide + 1) % totalSlides;
+    slides[currentSlide].classList.add("active");
+  }
+
+  setInterval(showNextSlide, 4000); // 4秒ごとに切り替え
+</script>
 </body>
 </html>
