@@ -10,7 +10,7 @@ body {
 /* ===== ヘッダー ===== */
 header {
   background-image: url("images/website-7210581_1280.png");
-  background-size: cover;
+  background-size: cover;     
   background-position: center;
   background-repeat: no-repeat;
   padding: 40px;
@@ -27,30 +27,38 @@ h1 {
 .item-list {
   list-style: none;
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 15px;
   padding: 0;
   margin: 30px;
 }
 
-.item-list li {
-  margin: 5px 10px;
-}
-
 .item-list li a {
   text-decoration: none;
   color: #fff;
-  font-size: 18px;
+  font-size: 20px;
   transition: color 0.3s;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
 }
 
 .item-list li a:hover {
   color: #e44;
 }
 
-/* ===== コンセプト画像 ===== */
+/* ===== コンセプト画像セクション ===== */
+/* 文字は非表示に */
+.concept-section > h2,
+.sns-section > h2 {
+  font-size: 0;
+  line-height: 0;
+  color: transparent;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
 .concept-section {
   width: 100%;
   margin: 0;
@@ -61,41 +69,71 @@ h1 {
   width: 100%;
   height: auto;
   display: block;
+  border-radius: 0;
+  box-shadow: none;
+  margin: 0;
 }
 
-/* ===== スライダー ===== */
+/* ===== おすすめ記事スライダー ===== */
 .slider-section {
   text-align: center;
   margin: 40px 0;
 }
 
 .slider-container {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  position: relative;
+  width: 1000px; /* PC幅 */
   margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* スライダー全体中央寄せ */
+  overflow: hidden;
+  gap: 10px;
 }
 
 .slider-track {
   display: flex;
   gap: 10px;
-  padding: 10px;
-  min-width: fit-content;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  flex-grow: 1;
+  max-width: 900px;
+  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.slider-track::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari */
 }
 
 .slider-item {
-  flex: 0 0 auto;
-  width: 180px;
+  flex: 0 0 200px;
+  margin-right: 10px;
   background: #222;
   border-radius: 10px;
   overflow: hidden;
   text-align: center;
+  color: white;
   position: relative;
+  padding: 0;
+}
+
+.slider-item .image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
 }
 
 .slider-item img {
   width: 100%;
-  height: 100px;
+  height: 100%;
   object-fit: cover;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border-bottom: none;
 }
 
 .slider-item .overlay {
@@ -111,44 +149,70 @@ h1 {
   transition: opacity 0.3s ease;
 }
 
-.slider-item:hover .overlay {
+.slider-item .image-wrapper:hover .overlay {
   opacity: 1;
 }
 
-/* スライダー矢印は非表示に */
-.slider-btn {
-  display: none;
+.slider-item h3 {
+  margin: 10px 0;
+  font-size: 16px;
 }
 
-.slider-track::-webkit-scrollbar {
-  display: none;
+/* スライダー矢印ボタン */
+.slider-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
+  padding: 0 10px;
+  user-select: none;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  z-index: 2;
+  transition: color 0.3s ease;
+}
+
+.slider-btn:hover {
+  color: #e44;
 }
 
 /* ===== 新着記事 ===== */
 .section-title {
   text-align: center;
-  font-size: 30px;
-  padding: 20px 0;
+  font-size: 50px;
+  font-weight: bold;
+  padding: 30px 0;
   letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* 新着記事見出しはセンター寄せ */
+.articles-section > h2 {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .articles-row {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
+  flex-wrap: wrap;
   margin: 30px auto;
-  max-width: 95%;
+  max-width: 90%;
 }
 
 .article-card {
+  flex: 1 1 45%;
+  max-width: 45%;
   background: #1a1a1a;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 0 10px #000;
   transition: transform 0.3s;
-  width: calc(50% - 10px);
-  max-width: 300px;
 }
 
 .article-card img {
@@ -160,6 +224,7 @@ h1 {
   font-size: 16px;
   text-align: center;
   padding: 10px;
+  color: #fff;
 }
 
 .article-card:hover {
@@ -193,39 +258,98 @@ footer {
   font-size: 14px;
 }
 
-/* ===== レスポンシブ対応 ===== */
+/* ===== 画像の上にテキスト重ねる ===== */
+.image-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.image-wrapper:hover .overlay {
+  opacity: 1;
+}
+
+.overlay h2 {
+  margin: 0;
+  font-size: 16px;
+}
+
+/* ===== レスポンシブ（スマホ対応） ===== */
 @media (max-width: 768px) {
-  h1 {
-    font-size: 26px;
+  /* ヘッダーの文字小さく */
+  header h1 {
+    font-size: 22px;
   }
 
+  /* コンセプト画像 */
+  .concept-section img {
+    max-width: 100%;
+  }
+
+  /* コンセプト・SNSの見出しは非表示のまま */
+  .concept-section > h2,
+  .sns-section > h2 {
+    display: none;
+  }
+
+  /* 新着記事タイトルはセンターのまま */
+  .articles-section > h2 {
+    font-size: 28px;
+  }
+
+  /* SNSアイコン小さく */
+  .sns-links img {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* ナビメニューを横並びに戻す（縦表示解除） */
   .item-list {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+    padding: 0;
+    gap: 12px;
   }
 
-  .slider-item {
-    width: 160px;
-  }
-
-  .article-card {
-    width: 100%;
+  /* 新着記事カード 横並び（2列）維持 */
+  .articles-row {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
     max-width: 100%;
   }
 
-  .section-title {
-    font-size: 22px;
+  .article-card {
+    flex: 1 1 45%;
+    max-width: 45%;
+    margin-bottom: 20px;
   }
 
-  .sns-links img {
-    width: 24px;
-    height: 24px;
+  /* スライダー部分 */
+  .slider-container {
+    width: 100%;
+    padding: 0 10px;
   }
 
-  footer {
-    font-size: 12px;
-    padding: 10px;
+  .slider-track {
+    max-width: 100%;
+  }
+
+  .slider-btn {
+    font-size: 24px;
+    height: 32px;
   }
 }
