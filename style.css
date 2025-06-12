@@ -31,13 +31,13 @@ h1 {
   flex-wrap: wrap;
   gap: 15px;
   padding: 0;
-  margin: 30px;
+  margin: 15px;
 }
 
 .item-list li a {
   text-decoration: none;
   color: #fff;
-  font-size: 20px;
+  font-size: 10px;
   transition: color 0.3s;
   letter-spacing: 2px;
 }
