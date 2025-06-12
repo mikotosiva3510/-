@@ -9,8 +9,8 @@ body {
 
 /* ===== ヘッダー ===== */
 header {
-  background-image: url("images/website-7210581_1280.png"); /* ← あなたの画像パスに変更 */
-  background-size: cover;     
+  background-image: url("images/website-7210581_1280.png");
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   padding: 40px;
@@ -57,9 +57,6 @@ h1 {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 0;
-  box-shadow: none;
-  margin: 0;
 }
 
 /* ===== おすすめ記事スライダー ===== */
@@ -70,10 +67,12 @@ h1 {
 
 .slider-container {
   position: relative;
-  width: 1000px; /* 5つ分の幅 */
+  width: 1000px;
   overflow: hidden;
-
   margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .slider-track {
@@ -82,7 +81,6 @@ h1 {
   padding: 10px 0;
   overflow-x: auto;
   scroll-behavior: smooth;
-  /* 幅はautoでOK、6つアイテムが横に並ぶ */
 }
 
 .slider-item {
@@ -93,103 +91,13 @@ h1 {
   overflow: hidden;
   text-align: center;
   color: white;
-  position: relative; /* 追加 */
-  padding: 0;          /* 追加 */
+  position: relative;
 }
 
 .slider-item img {
   width: 100%;
-  height: 120px; /* 必要に応じて調整 */
+  height: 120px;
   object-fit: cover;
-  display: block;
-  margin: 0;      /* 追加 */
-  padding: 0;     /* 追加 */
-  border-bottom: none; /* 念のため */
-}
-
-.slider-item .overlay {
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 10px;
-  background: rgba(0, 0, 0, 0.5);
-  color: #fff;
-  text-align: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.slider-item:hover .overlay {
-  opacity: 1;
-}
-
-.slider-item .image-wrapper {
-  width: 100%;
-  height: 120px; /* スライダーアイテムの高さに合わせて調整可能 */
-  position: relative;
-  overflow: hidden;
-}
-
-.slider-item h3 {
-  margin: 10px 0;
-  font-size: 16px;
-}
-
-/* スライダー矢印ボタン */
-.slider-container {
-  position: relative;
-  width: 1000px; /* 5つ分の幅 */
-  overflow: hidden;
-  
-  margin: 0 auto;
-
-  display: flex;
-  align-items: center; /* 縦方向中央揃え */
-  justify-content: space-between; /* ボタンを左右に配置 */
-}
-.slider-btn {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 32px;
-  cursor: pointer;
-  z-index: 2;
-  padding: 0;
-  height: 40px; /* ボタンの高さを固定 */
-  display: flex;
-  align-items: center; /* ボタン内の文字（矢印）を中央揃え */
-  justify-content: center;
-  user-select: none;
-}
-/* スクロールバーを非表示にする（Webkit系ブラウザ用） */
-.slider-track::-webkit-scrollbar {
-  display: none;
-}
-
-/* Firefox用 */
-.slider-track {
-  scrollbar-width: none;
-  -ms-overflow-style: none; /* IE/Edge用 */
-}
-.slider-btn:hover {
-  color: #e44;
-}
-.slider-link {
-  text-decoration: none;
-  color: inherit;
-}
-
-.slider-item .image-wrapper {
-  position: relative;
-  width: 100%;
-  height: 100px;
-}
-
-.slider-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
 }
 
 .slider-item .overlay {
@@ -209,6 +117,39 @@ h1 {
   opacity: 1;
 }
 
+.slider-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
+  z-index: 2;
+  padding: 0;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.slider-btn:hover {
+  color: #e44;
+}
+
+.slider-track::-webkit-scrollbar {
+  display: none;
+}
+
+.slider-track {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.slider-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* ===== 新着記事 ===== */
 .section-title {
   text-align: center;
@@ -218,10 +159,10 @@ h1 {
   letter-spacing: 2px;
   text-transform: uppercase;
 }
+
 .articles-section > h2 {
   text-align: center;
 }
-
 
 .articles-row {
   display: flex;
@@ -337,36 +278,29 @@ footer {
     height: 18px;
   }
 
-  .article-card {
-    margin-bottom: 20px;
-  }
-
-  /* スマホ時ナビメニュー縦並び */
+  /* スマホ時でもナビメニュー横並び */
   .item-list {
-    flex-direction: column;
-    align-items: center;
-    padding: 0;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
   }
 
   .item-list li {
-    margin: 10px 0;
+    margin: 5px 10px;
   }
 
-  /* 記事カード縦並び */
+  /* 新着記事：スマホでも横並び（1列になるのは600px以下に） */
   .articles-row {
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .article-card {
-    width: 90%;
+    flex: 1 1 45%;
+    max-width: 45%;
     margin-bottom: 20px;
-  }
-
-  /* SNSアイコン小さく */
-  .sns-links img {
-    width: 20px;
-    height: 20px;
   }
 
   .section-title {
@@ -380,6 +314,14 @@ footer {
     padding: 10px;
   }
 }
+
+@media (max-width: 600px) {
+  .article-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
 .concept-section > h2,
 .sns-section > h2 {
   font-size: 0;
