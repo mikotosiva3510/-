@@ -77,7 +77,7 @@ h1 {
 /* ===== コンセプト画像セクション ===== */
 .concept-section img {
   width: 100%;
-  height: auto; /* ← ここで縦幅を指定（好みに合わせて調整） */
+  height: 500%; /* ← ここで縦幅を指定（好みに合わせて調整） */
   object-fit: cover;
   object-position: bottom; 
   display: block;
